@@ -34841,7 +34841,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.2
+        time: 0.1625
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -34850,7 +34850,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.5
+        time: 0.4
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -34862,7 +34862,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: RigPelvis/RigSpine1/RigSpine2/RigSpine3/RigRibcage/RigRCollarbone/RigRUpperarm/RigRForearm/RigRPalm/Sword/GameObject
+    path: Armature/Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_R/Schoulder_R/Elbow_R/Hand_R/sword1H1/GameObject
     classID: 1
     script: {fileID: 0}
   - curve:
@@ -34878,7 +34878,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.2375
+        time: 0.1625
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -34887,7 +34887,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.5375
+        time: 0.425
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -34953,7 +34953,7 @@ AnimationClip:
       customType: 8
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 946774575
+      path: 3095818011
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
@@ -70708,7 +70708,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.2
+        time: 0.1625
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -70717,7 +70717,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.5
+        time: 0.4
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -70729,7 +70729,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: RigPelvis/RigSpine1/RigSpine2/RigSpine3/RigRibcage/RigRCollarbone/RigRUpperarm/RigRForearm/RigRPalm/Sword/GameObject
+    path: Armature/Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_R/Schoulder_R/Elbow_R/Hand_R/sword1H1/GameObject
     classID: 1
     script: {fileID: 0}
   - curve:
@@ -70745,7 +70745,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.2375
+        time: 0.1625
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -70754,7 +70754,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.5375
+        time: 0.425
         value: 0
         inSlope: Infinity
         outSlope: Infinity

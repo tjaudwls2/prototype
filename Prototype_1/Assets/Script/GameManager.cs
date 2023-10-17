@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI Lvtext;
     public Image ExpGage;
+    public bool notTown;
+
 
 
     public void LevelUp()
@@ -21,10 +23,18 @@ public class GameManager : MonoBehaviour
         level++;
         Exp -= MaxExp;
         Lvtext.text = "Lv. "+ level;
-        GameManager.GameManagerthis.ExpGage.fillAmount = GameManager.GameManagerthis.Exp / GameManager.GameManagerthis.MaxExp;
+        ExpGage.fillAmount =Exp /MaxExp;
+        Skill_List_Setting();
+
+
     }
 
+    public void Skill_List_Setting()
+    {
 
+
+
+    }
 
     [System.Serializable]
     public class wave
@@ -42,13 +52,16 @@ public class GameManager : MonoBehaviour
         if (null == gameManager)
         {
             gameManager = this;
-            DontDestroyOnLoad(this.gameObject);
+      
         }
         else
         {
             Destroy(this.gameObject);
         }
         player = GameObject.Find("Player").gameObject.GetComponent<Player>();
+       
+        
+        if(notTown)
         StartCoroutine(Spawn());
        
        

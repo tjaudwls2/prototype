@@ -6,9 +6,18 @@ public class follow : MonoBehaviour
 {
 
     public GameObject followObject;
+    Vector3 startpos;
+
+    private void Start()
+    {
+        startpos= this.transform.position;
+    }
     // Update is called once per frame
     void Update()
     {
-        this.transform.position = followObject.transform.position+new Vector3(0,17,-8);
+        float r = Input.GetAxis("Mouse X");
+
+        transform.Rotate(Vector3.up * 500f * Time.deltaTime * r);
+        this.transform.position = followObject.transform.position+ startpos;
     }
 }

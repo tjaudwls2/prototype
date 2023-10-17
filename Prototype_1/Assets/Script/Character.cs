@@ -8,7 +8,7 @@ public class Character : MonoBehaviour
     public float hp, maxhp;
     public float speed;
     public float attack_Power;
-    public float attack_Speed;
+    public float attack_Speed,attack_Cooltime;
     public float defense;
     public bool die = false;
 

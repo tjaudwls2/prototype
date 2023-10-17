@@ -11,13 +11,14 @@ public class Player : Character
     float vAxis;
     Vector3 moveVec;
     public Animator thisAnim;
+    public bool town;
     
-
 
     // Start is called before the first frame update
     void Start()
     {
         thisAnim = transform.GetChild(0).GetComponent<Animator>();
+        if(!town)
         StartCoroutine("Attack");
     }
 
@@ -26,31 +27,69 @@ public class Player : Character
     {
         GetInput();
         Move();
-        Turn();
+
+        attack_Cooltime += Time.deltaTime;
+        if (attack_Cooltime> attack_Speed)
+        {
+
+            if(Input.GetMouseButtonDown(0))
+            {
+                attack();
+                attack_Cooltime = 0;
+            }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                attacktwo();
+                attack_Cooltime = 0;
+            }
+
+        }
+
 
 
     }
-    
+    public void attack()
+    {
+        thisAnim.SetTrigger("Attack");
+    }
+    public void attacktwo()
+    {
+        thisAnim.SetTrigger("Buff");
+    }
     void GetInput()
     {
         hAxis = Input.GetAxisRaw("Horizontal");
         vAxis = Input.GetAxisRaw("Vertical");
    
     }
-
-    void Move()
+    private void Move()
     {
-        moveVec = new Vector3(hAxis, 0, vAxis).normalized;
-        transform.position += moveVec * speed * Time.deltaTime;
-        transform.LookAt(transform.position + moveVec);
+        Vector2 moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        bool isMove = moveInput.magnitude != 0;
 
-        if(hAxis!=0)
-            thisAnim.SetBool("Run",true);
-        else if (vAxis != 0)
-            thisAnim.SetBool("Run", true);
-        else
-            thisAnim.SetBool("Run", false);
+        if (isMove)
+        {
+            Vector3 lookForward = new Vector3(Camera.main.transform.forward.x, 0f, Camera.main.transform.forward.z).normalized;
+            Vector3 lookRight = new Vector3(Camera.main.transform.right.x, 0f, Camera.main.transform.right.z).normalized;
+            Vector3 moveDir = lookForward * moveInput.y + lookRight * moveInput.x;
+
+
+            transform.forward = lookForward;
+            
+
+
+            transform.position += moveDir * speed * Time.deltaTime;
+            transform.LookAt(transform.position + moveDir);
+
+            if (hAxis != 0)
+                thisAnim.SetBool("Run", true);
+            else if (vAxis != 0)
+                thisAnim.SetBool("Run", true);
+            else
+                thisAnim.SetBool("Run", false);
+        }
     }
+
 
     void Turn()
     {
@@ -64,17 +103,7 @@ public class Player : Character
     }
 
 
-    IEnumerator Attack()
-    {
-        while (!die)
-        {
-
-            thisAnim.SetTrigger("Attack");
-
-
-            yield return new WaitForSeconds(attack_Speed);
-        }
-    }
+  
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
