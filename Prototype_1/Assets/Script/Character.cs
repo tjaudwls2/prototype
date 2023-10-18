@@ -5,7 +5,8 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
    
-    public float hp, maxhp;
+    public float hp,
+                 maxhp;
     public float speed;
     public float attack_Power;
     public float attack_Speed,attack_Cooltime;

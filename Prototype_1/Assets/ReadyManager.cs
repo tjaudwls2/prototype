@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 [System.Serializable]
 public class team
 {
@@ -11,6 +12,9 @@ public class team
 
 public class ReadyManager : MonoBehaviour
 {
+
+    public Event stats;
+
     private static ReadyManager readyManager = null;
     void Awake()
     {
@@ -25,9 +29,10 @@ public class ReadyManager : MonoBehaviour
         }
 
 
+        SceneManager.sceneLoaded += Set_stat;
 
 
-    }
+        }
     public static ReadyManager readyManagerthis
     {
         get
@@ -41,10 +46,32 @@ public class ReadyManager : MonoBehaviour
     }
     public team[] myteam;
 
+    public Character stat_Save_dumb;//스탯저장용 더미
+    public Player player;
+    public void Set_stat(Scene scene, LoadSceneMode mode)
+    {
+        if (GameObject.Find("Player") != null)
+        {
+            player = GameObject.Find("Player").GetComponent<Player>();
+            player.hp = stat_Save_dumb.hp;
+            player.maxhp = stat_Save_dumb.maxhp;
+            player.speed = stat_Save_dumb.speed;
+            player.attack_Power = stat_Save_dumb.attack_Power;
+            player.attack_Speed = stat_Save_dumb.attack_Speed;
+            player.attack_Cooltime = stat_Save_dumb.attack_Cooltime;
+            player.defense = stat_Save_dumb.defense;
+        }
+  
 
+    }
     
-
-
+    public void nextscean()
+    {
+        SceneManager.LoadScene(1);
+        
+    }
+    
+  
 
 
 }

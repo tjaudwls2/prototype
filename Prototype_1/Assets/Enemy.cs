@@ -19,7 +19,9 @@ public class Enemy : Character
         if (!die)
         {
             this.transform.GetChild(0).LookAt(player.transform.position);
-            this.GetComponent<Rigidbody>().velocity = ((player.transform.position - this.transform.position).normalized * 100 * speed * Time.deltaTime);
+            Vector3 pos = (player.transform.position - this.transform.position).normalized;
+            //   this.GetComponent<Rigidbody>().velocity = (new Vector3(pos.x,0, pos.z) * speed );
+            transform.Translate(pos * speed*Time.deltaTime);
             attack_cooltime += Time.deltaTime;
             if (Vector3.Distance(this.transform.position, player.transform.position) < 1 && attack_cooltime > attack_Speed)
             {

@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
         {
             for (int i = 0; i < Wave[WaveCount].EnemyCount.Length; i++)
             {
-                Debug.Log(Wave[WaveCount].EnemyCount[i]);
+             //   Debug.Log(Wave[WaveCount].EnemyCount[i]);
                 for (int x = 0; x < Wave[WaveCount].EnemyCount[i]; x++)
                 {
                     GameObject enemy = Instantiate(Wave[WaveCount].Enemy[i], transform.position, transform.rotation);
