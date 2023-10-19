@@ -12,14 +12,16 @@ public class Player : Character
     Vector3 moveVec;
     public Animator thisAnim;
     public bool town;
-    
+    public bool stoprot;
+    public int jumpCount=2;
+
 
     // Start is called before the first frame update
     void Start()
     {
         thisAnim = transform.GetChild(0).GetComponent<Animator>();
-        if(!town)
-        StartCoroutine("Attack");
+        //if (!town)
+        //    StartCoroutine("Attack");
     }
 
     // Update is called once per frame
@@ -31,9 +33,10 @@ public class Player : Character
         attack_Cooltime += Time.deltaTime;
         if (attack_Cooltime> attack_Speed)
         {
-
-            if(Input.GetMouseButtonDown(0))
+          
+            if (Input.GetMouseButtonDown(0)&& Input.GetMouseButton(0))
             {
+                stoprot = true;
                 attack();
                 attack_Cooltime = 0;
             }
@@ -45,12 +48,30 @@ public class Player : Character
 
         }
 
+        if (Input.GetKeyDown(KeyCode.Space)&&jumpCount!=0)
+        {
+            jumpCount--;
+            thisAnim.SetTrigger("JumpStart");
+            thisAnim.SetBool("Jump", true);
+            GetComponent<Rigidbody>().AddForce(Vector3.up*1500);
+  
+        }
+
+
+
+
+    }
+    public void stoprotoff()
+    {
+        stoprot = false;
+
 
 
     }
     public void attack()
     {
         thisAnim.SetTrigger("Attack");
+        //Invoke("stoprotoff", 0.8f);
     }
     public void attacktwo()
     {
@@ -74,13 +95,16 @@ public class Player : Character
             Vector3 moveDir = lookForward * moveInput.y + lookRight * moveInput.x;
 
 
-            transform.forward = lookForward;
-            
 
+
+          transform.forward = lookForward;
 
             transform.position += moveDir * speed * Time.deltaTime;
-            transform.LookAt(transform.position + moveDir);
-
+            if (!stoprot)
+            {
+                
+                transform.LookAt(transform.position + moveDir);
+            }
             if (hAxis != 0)
                 thisAnim.SetBool("Run", true);
             else if (vAxis != 0)
@@ -91,16 +115,16 @@ public class Player : Character
     }
 
 
-    void Turn()
-    {
-        Vector3 dir = new Vector3(hAxis, 0, vAxis);
+    //void Turn()
+    //{
+    //    Vector3 dir = new Vector3(hAxis, 0, vAxis);
 
-        if (!(hAxis == 0 && vAxis == 0))
-        {
-            transform.position += dir * speed * Time.deltaTime;
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * rotationSpeed);
-        }
-    }
+    //    if (!(hAxis == 0 && vAxis == 0))
+    //    {
+    //        transform.position += dir * speed * Time.deltaTime;
+    //        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * rotationSpeed);
+    //    }
+    //}
 
 
   
@@ -110,6 +134,11 @@ public class Player : Character
         {
             DamageCalculate(collision.gameObject.GetComponent<Enemy>().attack_Power, GameManager.GameManagerthis.hiteff[1]);
 
+        }
+        if (collision.gameObject.CompareTag("Plane"))
+        {
+            jumpCount = 2;
+            thisAnim.SetBool("Jump", false);
         }
     }
     private void OnTriggerEnter(Collider other)

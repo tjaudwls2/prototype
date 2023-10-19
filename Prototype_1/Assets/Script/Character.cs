@@ -5,12 +5,15 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
    
-    public float hp,
+    public float hp,       //체력
                  maxhp;
-    public float speed;
-    public float attack_Power;
-    public float attack_Speed,attack_Cooltime;
-    public float defense;
+    public float speed;   //이동속도
+    public float attack_Power;  //공격력
+    public float attack_Speed,attack_Cooltime; //기본 공격속도
+    public float defense;   //방어력
+    public float critcal_per, critcal_damage;  //크리티컬 확률, 크리티컬 데미지 
+
+
     public bool die = false;
 
     public void DamageCalculate(float damage, GameObject hiteff)

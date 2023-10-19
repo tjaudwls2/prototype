@@ -410,6 +410,7 @@
 "Assets/Script/GameManager.cs"
 "Assets/Script/Player.cs"
 "Assets/SkillManager.cs"
+"Assets/stoprot.cs"
 -langversion:9.0
 
 /deterministic
