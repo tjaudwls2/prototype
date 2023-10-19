@@ -14,6 +14,8 @@ public class Player : Character
     public bool town;
     public bool stoprot;
     public int jumpCount=2;
+    public float jumpPower;
+    public bool buff;
 
 
     // Start is called before the first frame update
@@ -34,18 +36,39 @@ public class Player : Character
         if (attack_Cooltime> attack_Speed)
         {
           
-            if (Input.GetMouseButtonDown(0)&& Input.GetMouseButton(0))
+            if (Input.GetMouseButtonDown(0)&& Input.GetMouseButton(0)&& !stoprot)
             {
                 stoprot = true;
                 attack();
                 attack_Cooltime = 0;
             }
-            if (Input.GetKeyDown(KeyCode.E))
+         
+            if (Input.GetKeyDown(KeyCode.Alpha1) && !stoprot)
             {
+                stoprot = true;
+                attackWheel();
+                attack_Cooltime = 0;
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2)&& !buff)
+            {
+                this.transform.GetChild(1).GetComponent<ParticleSystem>().Play();
+                buff = true;
+                speed += 5f;
                 attacktwo();
                 attack_Cooltime = 0;
             }
-
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                stoprot = true;
+                thisAnim.SetTrigger("chageStart");
+                attack_Cooltime = 0;
+            }
+            if (Input.GetKeyUp(KeyCode.Alpha3))
+            {
+                stoprot = true;
+                thisAnim.SetTrigger("chageEnd");
+                attack_Cooltime = 0;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Space)&&jumpCount!=0)
@@ -53,13 +76,23 @@ public class Player : Character
             jumpCount--;
             thisAnim.SetTrigger("JumpStart");
             thisAnim.SetBool("Jump", true);
-            GetComponent<Rigidbody>().AddForce(Vector3.up*1500);
+            GetComponent<Rigidbody>().AddForce(Vector3.up* jumpPower);
   
         }
 
 
 
 
+    }
+    public void buffoff()
+    {
+        buff = false;
+        speed -= 2f;
+    }
+
+   public void attackWheel()
+    {
+        thisAnim.SetTrigger("Wheel");
     }
     public void stoprotoff()
     {

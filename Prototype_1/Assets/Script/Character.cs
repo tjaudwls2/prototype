@@ -33,4 +33,7 @@ public class Character : MonoBehaviour
         this.tag = "Die";
         this.gameObject.layer = 6;
     }
+
+
+
 }

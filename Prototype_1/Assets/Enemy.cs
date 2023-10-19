@@ -37,7 +37,7 @@ public class Enemy : Character
         if (other.CompareTag("PlayerAttack"))
         {
             DamageCalculate(player.attack_Power,GameManager.GameManagerthis.hiteff[0]);
-            Camera.main.DOShakePosition(0.1f,0.3f);
+          //  Camera.main.DOShakePosition(0.1f,0.3f);
         }
 
     }
