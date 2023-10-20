@@ -16,11 +16,12 @@ public class Player : Character
     public int jumpCount=2;
     public float jumpPower;
     public bool buff;
-
-
+    public float skill_chage_eff_scale;
+    public GameObject skill_chage_eff;
     // Start is called before the first frame update
     void Start()
     {
+      
         thisAnim = transform.GetChild(0).GetComponent<Animator>();
         //if (!town)
         //    StartCoroutine("Attack");
@@ -31,7 +32,7 @@ public class Player : Character
     {
         GetInput();
         Move();
-
+      //  transform.position += Vector3.forward * speed * Time.deltaTime;
         attack_Cooltime += Time.deltaTime;
         if (attack_Cooltime> attack_Speed)
         {
@@ -57,19 +58,31 @@ public class Player : Character
                 attacktwo();
                 attack_Cooltime = 0;
             }
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                stoprot = true;
-                thisAnim.SetTrigger("chageStart");
-                attack_Cooltime = 0;
-            }
-            if (Input.GetKeyUp(KeyCode.Alpha3))
-            {
-                stoprot = true;
-                thisAnim.SetTrigger("chageEnd");
-                attack_Cooltime = 0;
-            }
+
         }
+
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            thisAnim.SetTrigger("ChageStart");
+        }
+        else if (Input.GetKey(KeyCode.Alpha3))
+        {
+            stoprot = true;
+            thisAnim.SetBool("Chage", true);
+            skill_chage_eff_scale += Time.deltaTime;
+        
+            attack_Cooltime = 0;
+        }
+        else if (Input.GetKeyUp(KeyCode.Alpha3))
+        {
+
+            skill_chage_eff.transform.localScale = new Vector3(Mathf.Clamp(skill_chage_eff_scale, 0f,2f), Mathf.Clamp(skill_chage_eff_scale, 0f, 2f), Mathf.Clamp(skill_chage_eff_scale, 0f, 2f));
+            thisAnim.SetBool("Chage", false);
+            skill_chage_eff_scale = 0;
+            attack_Cooltime = 0;
+        }
+
 
         if (Input.GetKeyDown(KeyCode.Space)&&jumpCount!=0)
         {

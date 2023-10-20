@@ -18,7 +18,7 @@ public class ability_PowerUPManager : MonoBehaviour
 {
     public Character dumb;
 
-    public GameObject Background;
+    public GameObject Background,abilityUI;
     public List<abilityUI> buttons;
     public List<ability> Ability;
 
@@ -27,9 +27,11 @@ public class ability_PowerUPManager : MonoBehaviour
         dumb = ReadyManager.readyManagerthis.stat_Save_dumb;
         for (int i = 0; i < Ability.Count; i++)
         {
+            Instantiate(abilityUI, Background.transform);
             buttons.Add(Background.transform.GetChild(i).gameObject.GetComponent<abilityUI>());
             buttons[i].ability = Ability[i];
             buttons[i].setting();
+   
         }
 
     }

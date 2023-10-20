@@ -1,51 +1,132 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 [System.Serializable]
+public class skillevent : UnityEvent<int> { }
+
+
+[System.Serializable]
 public class skill
 {
     public string name;
     public Sprite img;
-    public string skillex;
-    public UnityEvent skill_Function;
+    public string[] skillex;
+    public skillevent skill_Function;
+    public int power_up;
 }
 
 public class SkillManager : MonoBehaviour
 {
-    public skill[] Player_skills;
+    public List<skill> Player_skills;
     public Character player;
 
-    
+    private static SkillManager skillManager = null;
+    void Awake()
+    {
+        if (null == skillManager)
+        {
+            skillManager = this;
+
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+
+
+
+
+    }
+    public static SkillManager SkillManagerthis
+    {
+        get
+        {
+            if (null == skillManager)
+            {
+                return null;
+            }
+            return skillManager;
+        }
+    }
     public void playerfind()
     {
         player = GameObject.Find("Player").GetComponent<Character>();
     }
 
 
-    public void Attack_PowerUP()
+    public GameObject Fire_prefab;
+    public void Fire(int power)
     {
-        playerfind();
-        player.attack_Power += 10;
+        switch (power)
+        {
+           case 0:Instantiate(Fire_prefab,player.transform); break;
+          
+           case 1: break;
+          
+           case 2: break;
+          
+           case 3: break;
+          
+           case 4: break;
+        }
+      
+
+
+
+
 
     }
-    public void HP_PowerUP()
+    public void HP_PowerUP(int power)
     {
-        playerfind();
-        player.maxhp += 10;
-        player.hp += 10;
+
+        switch (power)
+        {
+            case 0: break;
+
+            case 1: break;
+
+            case 2: break;
+
+            case 3: break;
+
+            case 4: break;
+        }
 
     }
-    public void Speed_PowerUP()
+    public void Speed_PowerUP(int power)
     {
-        playerfind();
-        player.speed += 5;
+
+        switch (power)
+        {
+            case 0: break;
+
+            case 1: break;
+
+            case 2: break;
+
+            case 3: break;
+
+            case 4: break;
+        }
 
     }
-    public void Attack_Speed_PowerUP()
+    public void Attack_Speed_PowerUP(int power)
     {
-        playerfind();
-        player.attack_Speed += 5;
+
+        switch (power)
+        {
+            case 0: break;
+
+            case 1: break;
+
+            case 2: break;
+
+            case 3: break;
+
+            case 4: break;
+        }
 
     }
 

@@ -18,7 +18,8 @@ public class stoprot : MonoBehaviour
    
     public void eff()
     {
-        hiteff.transform.position = this.transform.parent.gameObject.transform.position + this.transform.parent.gameObject.transform.forward;
+        hiteff.SetActive(true); 
+        hiteff.transform.position = this.transform.parent.gameObject.transform.position + (this.transform.parent.gameObject.transform.forward*2.5f);
         hiteff.GetComponent<ParticleSystem>().Play();
     }
 }

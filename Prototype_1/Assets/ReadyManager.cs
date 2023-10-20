@@ -12,7 +12,7 @@ public class team
 
 public class ReadyManager : MonoBehaviour
 {
-
+    public SkillManager skillManager;
     public Event stats;
 
     private static ReadyManager readyManager = null;
@@ -30,9 +30,15 @@ public class ReadyManager : MonoBehaviour
 
 
         SceneManager.sceneLoaded += Set_stat;
-
+        SceneManager.sceneLoaded += playerfind;
 
         }
+
+    public void playerfind(Scene scene, LoadSceneMode mode)
+    {
+        if (GameObject.Find("Player") != null)
+            skillManager.player = GameObject.Find("Player").GetComponent<Player>();
+    }
     public static ReadyManager readyManagerthis
     {
         get

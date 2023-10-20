@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 public class GameManager : MonoBehaviour
 {
     public GameObject enegry;
@@ -17,6 +19,8 @@ public class GameManager : MonoBehaviour
     public bool notTown;
 
 
+    public GameObject LevelUpUI;
+
 
     public void LevelUp()
     {
@@ -25,15 +29,47 @@ public class GameManager : MonoBehaviour
         Lvtext.text = "Lv. "+ level;
         ExpGage.fillAmount =Exp /MaxExp;
         Skill_List_Setting();
+        Time.timeScale = 0;
+        LevelUpUI.SetActive(true);
 
 
     }
+    public void selectSkill()
+    {
+        int x = EventSystem.current.currentSelectedGameObject.GetComponent<skillbtn>().thisskill.power_up;
+
+        EventSystem.current.currentSelectedGameObject.GetComponent<skillbtn>().thisskill.skill_Function.Invoke(x);// EventSystem.current.currentSelectedGameObject.GetComponent<skillbtn>().thisskill.power_up);
+        SkillManager.SkillManagerthis.Player_skills.Find(x => x == EventSystem.current.currentSelectedGameObject.GetComponent<skillbtn>().thisskill).power_up++;
+        Time.timeScale = 1;
+        LevelUpUI.GetComponent<Animator>().SetTrigger("End");
+    }
+
 
     public void Skill_List_Setting()
     {
+        List<skill> skills = new List<skill>();
+        foreach(skill skill in SkillManager.SkillManagerthis.Player_skills)
+        {
+            if( skill.power_up != 5)
+            skills.Add(skill);
+        }
+
+        for (int i = 0; i < 3; i++)
+        {
+            LevelUpUI.transform.GetChild(0).GetChild(i).gameObject.SetActive(false);
+        }
+
+        for (int i = 0; i < Mathf.Clamp(skills.Count,0,3); i++)
+        {
+     
+            LevelUpUI.transform.GetChild(0).GetChild(i).gameObject.SetActive(true);
+            skill selectskill = SkillManager.SkillManagerthis.Player_skills[Random.Range(0, SkillManager.SkillManagerthis.Player_skills.Count)];
+            skills.Remove(selectskill);
+            LevelUpUI.transform.GetChild(0).GetChild(i).gameObject.GetComponent<skillbtn>().thisskill = selectskill;
 
 
 
+        }
     }
 
     [System.Serializable]

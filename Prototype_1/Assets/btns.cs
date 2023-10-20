@@ -21,7 +21,7 @@ public class btns : MonoBehaviour
         btns_.SetActive(true);
 
         office.SetActive(false);
-        // Lab.SetActive(false);
+        Lab.SetActive(false);
         // board.SetActive(false);
     }
     public void officeOn()
