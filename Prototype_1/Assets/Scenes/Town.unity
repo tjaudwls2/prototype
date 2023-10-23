@@ -805,6 +805,7 @@ GameObject:
   - component: {fileID: 54170992}
   - component: {fileID: 54170995}
   - component: {fileID: 54170994}
+  - component: {fileID: 54170996}
   m_Layer: 5
   m_Name: adventure_Manager
   m_TagString: Untagged
@@ -874,6 +875,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 54170991}
   m_CullTransparentMesh: 1
+--- !u!114 &54170996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54170991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1be3796d2971d844c9f59a9f69ada659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &61309336
 GameObject:
   m_ObjectHideFlags: 0
@@ -1654,6 +1667,7 @@ MonoBehaviour:
   office: {fileID: 1834941586}
   Lab: {fileID: 1352596114}
   board: {fileID: 0}
+  adventure: {fileID: 0}
 --- !u!1 &124675602
 GameObject:
   m_ObjectHideFlags: 0
@@ -8921,7 +8935,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
     power_up: 0
-    Lock: 1
+    Lock: 0
   Player_skills: []
   player: {fileID: 0}
   Fire_prefab: {fileID: 8532374011113072503, guid: 84bf0922f2f4c35459e4f3e7cc003d9d,

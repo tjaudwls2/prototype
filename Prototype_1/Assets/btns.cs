@@ -6,7 +6,7 @@ public class btns : MonoBehaviour
 {
     GameObject btns_;
 
-    public GameObject office, Lab, board;
+    public GameObject office, Lab, board,adventure;
     private void Awake()
     {
         btns_ = GameObject.Find("btns");
@@ -22,7 +22,12 @@ public class btns : MonoBehaviour
 
         office.SetActive(false);
         Lab.SetActive(false);
+        adventure.SetActive(false);
         // board.SetActive(false);
+    }
+    public void adventureOn()
+    {
+        adventure.SetActive(true);
     }
     public void officeOn()
     {

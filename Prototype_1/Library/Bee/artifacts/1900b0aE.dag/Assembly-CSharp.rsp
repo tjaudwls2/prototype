@@ -378,6 +378,7 @@
 "Assets/abilityUI.cs"
 "Assets/ability_PowerUPManager.cs"
 "Assets/adventure_Manager.cs"
+"Assets/adventure_UI.cs"
 "Assets/aimscript.cs"
 "Assets/Anim.cs"
 "Assets/Assetsfodler/AA_UniversalCharacter/Scripts/ModulesShaker.cs"
