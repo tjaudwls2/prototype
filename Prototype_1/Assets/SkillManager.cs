@@ -15,11 +15,15 @@ public class skill
     public string[] skillex;
     public skillevent skill_Function;
     public int power_up;
+    public bool Lock;
 }
 
 public class SkillManager : MonoBehaviour
 {
-    public List<skill> Player_skills;
+
+
+    public List<skill> skill_list;   //모든 스킬 리스트
+    public List<skill> Player_skills;//보유한 특성
     public Character player;
 
     private static SkillManager skillManager = null;
@@ -34,7 +38,13 @@ public class SkillManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
+        foreach (skill skill in skill_list)
+        {
+            if (!skill.Lock)
+            {
+                Player_skills.Add(skill);
+            }
+        }
 
 
 

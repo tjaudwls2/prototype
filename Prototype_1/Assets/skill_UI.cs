@@ -10,6 +10,11 @@ public class skill_UI : MonoBehaviour
     public skill thisskill;
     public void setting()
     {
+        if(thisskill.Lock)
+        this.transform.Find("Lock").gameObject.SetActive(true);
+        else
+        this.transform.Find("Lock").gameObject.SetActive(false);
+        
         this.transform.Find("abilityImg").GetComponent<Image>().sprite = thisskill.img;
         this.transform.Find("name").GetComponent<TextMeshProUGUI>().text = thisskill.name + "Lv.1";
         this.transform.Find("ex").GetComponent<TextMeshProUGUI>().text = thisskill.skillex[thisskill.power_up];

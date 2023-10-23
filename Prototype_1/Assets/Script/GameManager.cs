@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 using DG.Tweening;
 public class GameManager : MonoBehaviour
 {
@@ -144,5 +145,8 @@ public class GameManager : MonoBehaviour
 
     }
 
-
+    public void goTown()
+    {
+        SceneManager.LoadScene(0);
+    }
 }

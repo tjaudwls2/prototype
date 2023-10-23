@@ -12,6 +12,7 @@ public class team
 
 public class ReadyManager : MonoBehaviour
 {
+    public adventure_Manager adventure_Manager;
     public SkillManager skillManager;
     public Event stats;
 
@@ -27,12 +28,11 @@ public class ReadyManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
-
         SceneManager.sceneLoaded += Set_stat;
         SceneManager.sceneLoaded += playerfind;
+        adventure_Manager = GetComponent<adventure_Manager>();
 
-        }
+    }
 
     public void playerfind(Scene scene, LoadSceneMode mode)
     {
@@ -54,6 +54,7 @@ public class ReadyManager : MonoBehaviour
 
     public Character stat_Save_dumb;//스탯저장용 더미
     public Player player;
+    public List<Quest_Class> have_quest;
     public void Set_stat(Scene scene, LoadSceneMode mode)
     {
         if (GameObject.Find("Player") != null)
@@ -71,11 +72,7 @@ public class ReadyManager : MonoBehaviour
 
     }
     
-    public void nextscean()
-    {
-        SceneManager.LoadScene(1);
-        
-    }
+
     
   
 
