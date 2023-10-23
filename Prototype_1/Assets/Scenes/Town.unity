@@ -830,7 +830,7 @@ RectTransform:
   - {fileID: 461467671}
   - {fileID: 690181475}
   m_Father: {fileID: 1276745764}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -887,6 +887,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1be3796d2971d844c9f59a9f69ada659, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  QC_UI: {fileID: 3220998939556152770, guid: 2618f32e866a91245b56698fe959e8c8, type: 3}
+  background: {fileID: 1723079527}
 --- !u!1 &61309336
 GameObject:
   m_ObjectHideFlags: 0
@@ -1667,7 +1669,7 @@ MonoBehaviour:
   office: {fileID: 1834941586}
   Lab: {fileID: 1352596114}
   board: {fileID: 0}
-  adventure: {fileID: 0}
+  adventure: {fileID: 54170991}
 --- !u!1 &124675602
 GameObject:
   m_ObjectHideFlags: 0
@@ -8005,7 +8007,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 504048432}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 115710849}
+        m_TargetAssemblyTypeName: btns, Assembly-CSharp
+        m_MethodName: nextscean
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &504048432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8775,7 +8789,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 115710849}
         m_TargetAssemblyTypeName: btns, Assembly-CSharp
-        m_MethodName: nextscean
+        m_MethodName: adventureOn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8953,14 +8967,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   quset_Classes:
-  - quest_Name: 
-    quest_Ex: 
+  - quest_Name: "5\uBD84"
+    quest_Ex: "\uBC84\uD2F0\uAE30"
     quest_Type: 0
-    Count_Time: 0
+    Count_Time: 5
     enemy_Quset:
       Enemy: {fileID: 0}
       Count_Enemy: 0
     quest_Clear: 0
+    quest_accept: 0
     compensation_Gold: 0
     compensation_Skill_Name: 
     compensation_quset_Name: 
@@ -8972,6 +8987,7 @@ MonoBehaviour:
       Enemy: {fileID: 0}
       Count_Enemy: 0
     quest_Clear: 0
+    quest_accept: 0
     compensation_Gold: 0
     compensation_Skill_Name: 
     compensation_quset_Name: 
@@ -18795,9 +18811,9 @@ RectTransform:
   - {fileID: 115710848}
   - {fileID: 566163492}
   - {fileID: 1834941587}
-  - {fileID: 1562390442}
   - {fileID: 1352596115}
   - {fileID: 54170992}
+  - {fileID: 1562390442}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -19800,7 +19816,7 @@ RectTransform:
   - {fileID: 680833882}
   - {fileID: 1975557252}
   m_Father: {fileID: 1276745764}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
@@ -22588,7 +22604,7 @@ RectTransform:
   m_Children:
   - {fileID: 30836156}
   m_Father: {fileID: 1276745764}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -29232,7 +29248,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -167, y: 291.10468}
+  m_AnchoredPosition: {x: -167, y: 267.95514}
   m_SizeDelta: {x: 423.68713, y: 755.1047}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2049894403
