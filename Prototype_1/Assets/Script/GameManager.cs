@@ -21,8 +21,34 @@ public class GameManager : MonoBehaviour
 
 
     public GameObject LevelUpUI;
+    
+    public QuestManager QuestManager;
+    public float time_check;
+
+    private void Start()
+    {
+        StartCoroutine("checkQC");
+    }
+    IEnumerator checkQC()
+    {
+        while (true)
+        {
+   
+            QuestManager.Quest_Check(time_check);
 
 
+            yield return new WaitForSeconds(30f);
+        }
+
+
+    }
+
+
+    private void Update()
+    {
+        time_check += Time.deltaTime;
+      
+    }
     public void LevelUp()
     {
         level++;

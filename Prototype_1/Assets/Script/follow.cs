@@ -32,7 +32,7 @@ public class follow : MonoBehaviour
         float x = camAngle.x - mouseDelta.y;
         if (x < 180f)
         {
-            x = Mathf.Clamp(x, -1f, 40f);
+            x = Mathf.Clamp(x, 1f, 40f);
         }
         else
         {

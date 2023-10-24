@@ -1,3 +1,4 @@
+using FIMSpace.GroundFitter;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,6 +33,7 @@ public class Player : Character
     {
         GetInput();
         Move();
+
       //  transform.position += Vector3.forward * speed * Time.deltaTime;
         attack_Cooltime += Time.deltaTime;
         if (attack_Cooltime> attack_Speed)
@@ -84,13 +86,16 @@ public class Player : Character
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Space)&&jumpCount!=0)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             jumpCount--;
-            thisAnim.SetTrigger("JumpStart");
-            thisAnim.SetBool("Jump", true);
-            GetComponent<Rigidbody>().AddForce(Vector3.up* jumpPower);
-  
+            if (jumpCount > 0)
+            {
+           
+               thisAnim.SetTrigger("JumpStart");
+               thisAnim.SetBool("Jump", true);
+              // GetComponent<Rigidbody>().AddForce(Vector3.up * jumpPower);
+            }
         }
 
 
@@ -134,23 +139,26 @@ public class Player : Character
         Vector2 moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         bool isMove = moveInput.magnitude != 0;
 
+        this.GetComponent<FGroundFitter_Movement>().BaseSpeed = speed;
+        this.GetComponent<FGroundFitter_Movement>().SprintingSpeed = speed*2f;
+        ray();
         if (isMove)
         {
-            Vector3 lookForward = new Vector3(Camera.main.transform.forward.x, 0f, Camera.main.transform.forward.z).normalized;
-            Vector3 lookRight = new Vector3(Camera.main.transform.right.x, 0f, Camera.main.transform.right.z).normalized;
-            Vector3 moveDir = lookForward * moveInput.y + lookRight * moveInput.x;
-
-
-
-
-          transform.forward = lookForward;
-
-            transform.position += moveDir * speed * Time.deltaTime;
-            if (!stoprot)
-            {
-                
-                transform.LookAt(transform.position + moveDir);
-            }
+          //  Vector3 lookForward = new Vector3(Camera.main.transform.forward.x, 0f, Camera.main.transform.forward.z).normalized;
+          //  Vector3 lookRight = new Vector3(Camera.main.transform.right.x, 0f, Camera.main.transform.right.z).normalized;
+          //  Vector3 moveDir = lookForward * moveInput.y + lookRight * moveInput.x;
+          //
+          //
+          //
+          //
+          //transform.forward = lookForward;
+          //
+          //  transform.position += moveDir * speed * Time.deltaTime;
+          //  if (!stoprot)
+          //  {
+          //      
+          //      transform.LookAt(transform.position + moveDir);
+          //  }
             if (hAxis != 0)
                 thisAnim.SetBool("Run", true);
             else if (vAxis != 0)
@@ -171,8 +179,27 @@ public class Player : Character
     //        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * rotationSpeed);
     //    }
     //}
+    private void FixedUpdate()
+    {
+        
+    }
+    public void ray()
+    {
+        if (this.GetComponent<Rigidbody>().velocity.y <= 0)
+        {
+  
+            bool isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.05f, LayerMask.GetMask("Plane"));
+            if (isGrounded)
+            {
+
+                thisAnim.SetBool("Jump", false);
+                jumpCount = 2;
+            }
+        }
+         
 
 
+    }
   
     private void OnCollisionEnter(Collision collision)
     {
@@ -181,11 +208,7 @@ public class Player : Character
             DamageCalculate(collision.gameObject.GetComponent<Enemy>().attack_Power, GameManager.GameManagerthis.hiteff[1]);
 
         }
-        if (collision.gameObject.CompareTag("Plane"))
-        {
-            jumpCount = 2;
-            thisAnim.SetBool("Jump", false);
-        }
+       
     }
     private void OnTriggerEnter(Collider other)
     {
