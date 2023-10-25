@@ -11,11 +11,12 @@ public class skillevent : UnityEvent<int> { }
 public class skill
 {
     public string name;
+    public string skill_all_ex;
     public string[] skill_name;
     public Sprite img;
     public string[] skillex;
     public skillevent skill_Function;
-    public int power_up;
+    public List<bool> power_up;
     public bool[] Lock =new bool[2];
 }
 

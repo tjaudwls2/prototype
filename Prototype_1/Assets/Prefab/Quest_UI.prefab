@@ -76,7 +76,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 0
   m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
+    rgba: 3289650
   m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -284,6 +284,8 @@ GameObject:
   - component: {fileID: 3220998939556152798}
   - component: {fileID: 3220998939556152769}
   - component: {fileID: 3220998939556152768}
+  - component: {fileID: 2251803348342872561}
+  - component: {fileID: 804724211181294509}
   m_Layer: 5
   m_Name: Quest_UI
   m_TagString: Untagged
@@ -372,11 +374,46 @@ MonoBehaviour:
     enemy_Quset:
       Enemy: {fileID: 0}
       Count_Enemy: 0
+      Max_Enemy: 0
     quest_Clear: 0
     quest_accept: 0
     compensation_Gold: 0
     compensation_Skill_Name: 
+    compensation_Skill_Count: 0
     compensation_quset_Name: 
+--- !u!95 &2251803348342872561
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3220998939556152770}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 635bc7c87ffaf104ba932695b1425a9c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &804724211181294509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3220998939556152770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36dcbefab3490224da7696d5ee41f700, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3220998939723100109
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,7 +612,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 0
   m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3

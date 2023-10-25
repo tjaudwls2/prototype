@@ -6,7 +6,7 @@ public class btns : MonoBehaviour
 {
     GameObject btns_;
 
-    public GameObject office, Lab, board,adventure;
+    public GameObject office, Lab, board,adventure,skill_Ex;
     private void Awake()
     {
         btns_ = GameObject.Find("btns");
@@ -14,9 +14,7 @@ public class btns : MonoBehaviour
     }
     public void skillBackOff()
     {
-        GameObject skill_BackGround = GameObject.Find("skill_PowerUPManager").GetComponent<skill_PowerUPManager>().skill_BackGround;
-
-        skill_BackGround.SetActive(false);
+        skill_Ex.SetActive(false);
     }
     public void offbtn()
     {

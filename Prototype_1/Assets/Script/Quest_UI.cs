@@ -31,6 +31,7 @@ public class Quest_UI : MonoBehaviour
 
     public void Accept()
     {
+     
         if (!thisQuest.quest_Clear)
         {
             thisQuest.quest_accept = true;
@@ -50,8 +51,31 @@ public class Quest_UI : MonoBehaviour
 
 
             }
-          //  SkillManager.SkillManagerthis.
+            foreach(skill skills in SkillManager.SkillManagerthis.skill_list)
+            {
+          
+                if (skills.name == thisQuest.compensation_Skill_Name)
+                {
+                    skills.Lock[thisQuest.compensation_Skill_Count] = false;
 
+                }
+
+            }
+
+            foreach(Quest_Class QC in ReadyManager.readyManagerthis.adventure_Manager.quset_Classes)
+            {
+                if(QC.quest_Name == thisQuest.quest_Name)
+                {
+                    QC.quest_Clear = true;
+                    ReadyManager.readyManagerthis.adventure_Manager.quset_possible.Remove(QC);
+                }
+            }
+
+
+
+
+            ReadyManager.readyManagerthis.have_quest.Remove(thisQuest);
+            this.GetComponent<Animator>().SetTrigger("End");
 
 
         }

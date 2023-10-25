@@ -5,4 +5,5 @@ using UnityEngine;
 public class skillbtn : MonoBehaviour
 {
    public skill thisskill;
+    public int skillid = 0;
 }

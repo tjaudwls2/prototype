@@ -33,7 +33,7 @@ public class Quest_Class
     public bool quest_accept;                           //퀘스트를 수락했는가?
     public float compensation_Gold;                     //보상(골드)
     public string compensation_Skill_Name;              //보상(스킬)
-    public string compensation_Skill_Count;             //보상(스킬의 강화도)
+    public int compensation_Skill_Count;                //보상(스킬의 강화도)
     public string compensation_quset_Name;              //보상(?)(다음 퀘스트)
 }
 
@@ -43,18 +43,20 @@ public class adventure_Manager : MonoBehaviour
     public List<Quest_Class> quset_Classes;  //모든 퀘스트
     public List<Quest_Class> quset_possible; //가능한 퀘스트 목록
 
-    private void Awake()
+    private void OnEnable()
     {
+        quset_possible.Clear();
 
-        if(!quset_Classes[0].quest_Clear)
-        quset_possible.Add(quset_Classes[0]);
+        if (!quset_Classes[0].quest_Clear)
+            quset_possible.Add(quset_Classes[0]);
 
         if (!quset_Classes[1].quest_Clear)
-        quset_possible.Add(quset_Classes[1]);
-       
+            quset_possible.Add(quset_Classes[1]);
+
 
 
     }
+
 
 
 

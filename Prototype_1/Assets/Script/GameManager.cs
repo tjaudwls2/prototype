@@ -6,8 +6,12 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
+using System.Linq;
+
 public class GameManager : MonoBehaviour
 {
+
+    public float time_Max;
     public GameObject enegry;
     public GameObject[] hiteff;
     Player player;
@@ -42,12 +46,14 @@ public class GameManager : MonoBehaviour
 
 
     }
-
+    public TextMeshProUGUI time_text;
 
     private void Update()
     {
         time_check += Time.deltaTime;
-      
+        float x = time_Max - time_check;
+        time_text.text = ((int)x/60%60).ToString("D2") + " : "+((int)x%60).ToString("D2");
+
     }
     public void LevelUp()
     {
@@ -63,39 +69,98 @@ public class GameManager : MonoBehaviour
     }
     public void selectSkill()
     {
-        int x = EventSystem.current.currentSelectedGameObject.GetComponent<skillbtn>().thisskill.power_up;
+        int x = EventSystem.current.currentSelectedGameObject.GetComponent<skillbtn>().skillid;
 
         EventSystem.current.currentSelectedGameObject.GetComponent<skillbtn>().thisskill.skill_Function.Invoke(x);// EventSystem.current.currentSelectedGameObject.GetComponent<skillbtn>().thisskill.power_up);
-        SkillManager.SkillManagerthis.Player_skills.Find(x => x == EventSystem.current.currentSelectedGameObject.GetComponent<skillbtn>().thisskill).power_up++;
-        Time.timeScale = 1;
+         SkillManager.SkillManagerthis.Player_skills.Find(x => x == EventSystem.current.currentSelectedGameObject.GetComponent<skillbtn>().thisskill).power_up[x] =true;
         LevelUpUI.GetComponent<Animator>().SetTrigger("End");
     }
 
+    public void Comparison(int i,skill selectskill, int a, int b)
+    {
+        if (three_SB != null)
+        {
+            foreach (skillbtn sb in three_SB)
+            {
+                if (sb.thisskill.name == selectskill.name)
+                {
+                    if (sb.skillid == a)
+                    {
+                        LevelUpUI.transform.Find("three_skill").GetChild(i).gameObject.GetComponent<skillbtn>().skillid = b;
+                    }
+                    if (sb.skillid == b)
+                    {
+                        LevelUpUI.transform.Find("three_skill").GetChild(i).gameObject.GetComponent<skillbtn>().skillid = a;
+                    }
+                }
+            }
+        }
+    }
 
+
+    public List<skillbtn> three_SB=new List<skillbtn>();
+   public  List<skill> skills = new List<skill>();
     public void Skill_List_Setting()
     {
-        List<skill> skills = new List<skill>();
-        foreach(skill skill in SkillManager.SkillManagerthis.Player_skills)
+        if(three_SB!=null)
+        three_SB.Clear();
+        skills.Clear();
+        foreach (skill skill in SkillManager.SkillManagerthis.Player_skills)//락이 걸려있는지 확인 
         {
-            if( skill.power_up != 5)
-            skills.Add(skill);
+            if (!skill.power_up[2] && !skill.power_up[3] && !skill.power_up[4] && !skill.power_up[5])
+            {
+                if (!skill.Lock[1])
+                {
+                    skills.Add(skill);
+                    skills.Add(skill);
+                }
+                else
+                {
+                    if (!skill.power_up[0] && !skill.power_up[1])
+                    {
+                        skills.Add(skill);
+                        skills.Add(skill);
+                    }
+
+                }
+            }
         }
+
+
+
+
 
         for (int i = 0; i < 3; i++)
         {
-            LevelUpUI.transform.GetChild(0).GetChild(i).gameObject.SetActive(false);
+            LevelUpUI.transform.Find("three_skill").GetChild(i).gameObject.SetActive(false);
         }
-
-        for (int i = 0; i < Mathf.Clamp(skills.Count,0,3); i++)
+        int y = Mathf.Clamp(skills.Count, 0, 3);
+        for (int i = 0; i < y; i++)
         {
-     
-            LevelUpUI.transform.GetChild(0).GetChild(i).gameObject.SetActive(true);
-            skill selectskill = SkillManager.SkillManagerthis.Player_skills[Random.Range(0, SkillManager.SkillManagerthis.Player_skills.Count)];
+            LevelUpUI.transform.Find("three_skill").GetChild(i).gameObject.SetActive(true);
+            skill selectskill = skills[Random.Range(0, skills.Count)];
+
+            if (!selectskill.power_up[0] && !selectskill.power_up[1])
+            {
+                LevelUpUI.transform.Find("three_skill").GetChild(i).gameObject.GetComponent<skillbtn>().skillid = Random.Range(0, 2);
+
+                Comparison(i, selectskill, 0, 1);
+            }
+            else if (selectskill.power_up[0])
+            {
+                LevelUpUI.transform.Find("three_skill").GetChild(i).gameObject.GetComponent<skillbtn>().skillid = Random.Range(2, 4);
+                Comparison(i, selectskill, 2, 3);
+            }
+            else if (selectskill.power_up[1])
+            {
+                LevelUpUI.transform.Find("three_skill").GetChild(i).gameObject.GetComponent<skillbtn>().skillid = Random.Range(4, 6);
+                Comparison(i, selectskill, 4, 5);
+            }
             skills.Remove(selectskill);
-            LevelUpUI.transform.GetChild(0).GetChild(i).gameObject.GetComponent<skillbtn>().thisskill = selectskill;
-
-
-
+            three_SB.Add(LevelUpUI.transform.Find("three_skill").GetChild(i).gameObject.GetComponent<skillbtn>());
+            LevelUpUI.transform.Find("three_skill").GetChild(i).gameObject.GetComponent<skillbtn>().thisskill = selectskill;
+            LevelUpUI.transform.Find("three_skill").GetChild(i).GetChild(0).GetComponent<TextMeshProUGUI>().text = selectskill.name;
+            LevelUpUI.transform.Find("three_skill").GetChild(i).GetChild(1).GetComponent<TextMeshProUGUI>().text = selectskill.skillex[LevelUpUI.transform.Find("three_skill").GetChild(i).gameObject.GetComponent<skillbtn>().skillid];
         }
     }
 

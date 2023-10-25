@@ -17,7 +17,7 @@ public class skill_UI : MonoBehaviour
         
         this.transform.Find("abilityImg").GetComponent<Image>().sprite = thisskill.img;
         this.transform.Find("name").GetComponent<TextMeshProUGUI>().text = thisskill.name;
-        this.transform.Find("ex").GetComponent<TextMeshProUGUI>().text = thisskill.skillex[thisskill.power_up];
+        this.transform.Find("ex").GetComponent<TextMeshProUGUI>().text = thisskill.skill_all_ex;
         this.transform.Find("Button").GetComponent<Button>().onClick.RemoveAllListeners();
         this.transform.Find("Button").GetComponent<Button>().onClick.AddListener(skillSet_Get);
         this.transform.Find("Button").transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "º±≈√";

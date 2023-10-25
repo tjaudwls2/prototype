@@ -14,4 +14,8 @@ public class Anim : MonoBehaviour
     
   
     }
+    public void timestart()
+    {
+        Time.timeScale = 1;
+    }
 }

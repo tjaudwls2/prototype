@@ -964,7 +964,6 @@ RectTransform:
   - {fileID: 1418680746}
   - {fileID: 1142853885}
   - {fileID: 461467671}
-  - {fileID: 690181475}
   m_Father: {fileID: 1276745764}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1806,6 +1805,7 @@ MonoBehaviour:
   Lab: {fileID: 1352596114}
   board: {fileID: 0}
   adventure: {fileID: 54170991}
+  skill_Ex: {fileID: 174631247}
 --- !u!1 &124675602
 GameObject:
   m_ObjectHideFlags: 0
@@ -7651,13 +7651,14 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 838062773}
+  - {fileID: 690181475}
   m_Father: {fileID: 54170992}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 402.3506, y: 0}
+  m_SizeDelta: {x: 378.79, y: 0}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &461467672
 MonoBehaviour:
@@ -9212,18 +9213,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 115710849}
-        m_TargetAssemblyTypeName: btns, Assembly-CSharp
-        m_MethodName: skillBackOff
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &566163494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9352,6 +9341,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skill_list:
   - name: "\uD654\uC5FC"
+    skill_all_ex: "\uC801\uC744 \uB530\uB73B\uD558\uAC8C \uD574\uC8FC\uB294 \uD2B9\uC131\uC785\uB2C8\uB2E4                             
+      *\uC8FC\uC758 : \uC7AC\uAC00 \uB420\uC218\uC788\uC74C"
     skill_name:
     - "\uD654\uC5FC 1"
     - "\uD654\uC5FC 2"
@@ -9382,8 +9373,43 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-    power_up: 0
-    Lock: 0000
+    power_up: 000000000000
+    Lock: 0001
+  - name: "\uB545"
+    skill_all_ex: "\uC801\uC744 \uB530\uB73B\uD558\uAC8C \uD574\uC8FC\uB294 \uD2B9\uC131\uC785\uB2C8\uB2E4                             
+      *\uC8FC\uC758 : \uC7AC\uAC00 \uB420\uC218\uC788\uC74C"
+    skill_name:
+    - "\uD654\uC5FC 1"
+    - "\uD654\uC5FC 2"
+    - "\uD654\uC5FC 3"
+    - "\uD654\uC5FC 4"
+    - "\uD654\uC5FC 5"
+    - "\uD654\uC5FC 6"
+    img: {fileID: 0}
+    skillex:
+    - "\uD654\uC5FC\uB370\uBBF8\uC9C0 10"
+    - "\uD654\uC5FC\uAD6C\uCCB4 X2"
+    - "\uD654\uC5FC\uAD6C\uCCB4 \uD06C\uAE30 +10"
+    - "\uD654\uC5FC\uC18D\uB3C4 +10"
+    - "\uD654\uC5FC\uAD6C\uCCB4 X5"
+    - "\uD654\uC5FC\uAD6C\uCCB4 X 10"
+    skill_Function:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 570046379}
+          m_TargetAssemblyTypeName: SkillManager, Assembly-CSharp
+          m_MethodName: Fire
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    power_up: 000000000000
+    Lock: 0001
   Player_skills: []
   player: {fileID: 0}
   Fire_prefab: {fileID: 8532374011113072503, guid: 84bf0922f2f4c35459e4f3e7cc003d9d,
@@ -9404,16 +9430,16 @@ MonoBehaviour:
   - quest_Name: "5\uBD84"
     quest_Ex: "\uBC84\uD2F0\uAE30"
     quest_Type: 0
-    Count_Time: 300
+    Count_Time: 0
     enemy_Quset:
       Enemy: {fileID: 0}
       Count_Enemy: 0
       Max_Enemy: 0
     quest_Clear: 0
     quest_accept: 0
-    compensation_Gold: 0
-    compensation_Skill_Name: 
-    compensation_Skill_Count: 
+    compensation_Gold: 10
+    compensation_Skill_Name: "\uD654\uC5FC"
+    compensation_Skill_Count: 0
     compensation_quset_Name: 
   - quest_Name: "\uC2AC\uB77C\uC784 \uC7A1\uAE30"
     quest_Ex: "5\uB9C8\uB9AC\uC7A1\uAE30"
@@ -9428,7 +9454,7 @@ MonoBehaviour:
     quest_accept: 0
     compensation_Gold: 0
     compensation_Skill_Name: 
-    compensation_Skill_Count: 
+    compensation_Skill_Count: 0
     compensation_quset_Name: 
   quset_possible: []
 --- !u!1 &573554856
@@ -11842,20 +11868,20 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 690181474}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 504048430}
-  m_Father: {fileID: 54170992}
-  m_RootOrder: 3
+  m_Father: {fileID: 461467671}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 211.32, y: -199.14494}
-  m_SizeDelta: {x: 402.35, y: 65.7101}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 378.79, y: 65.7101}
+  m_Pivot: {x: 1, y: 0}
 --- !u!114 &690181476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17756,8 +17782,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 210.0971, y: -37.1507}
-  m_SizeDelta: {x: 386.2259, y: 347.7771}
+  m_AnchoredPosition: {x: 201.44955, y: -32.826923}
+  m_SizeDelta: {x: 368.9308, y: 339.1295}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1142853886
 MonoBehaviour:
@@ -20424,7 +20450,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 824, y: 0}
+  m_SizeDelta: {x: 826, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1352596116
 MonoBehaviour:
@@ -23409,6 +23435,18 @@ MonoBehaviour:
       - m_Target: {fileID: 115710849}
         m_TargetAssemblyTypeName: btns, Assembly-CSharp
         m_MethodName: onbtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 115710849}
+        m_TargetAssemblyTypeName: btns, Assembly-CSharp
+        m_MethodName: skillBackOff
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

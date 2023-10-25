@@ -37,8 +37,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 115.1, y: -5.5585}
-  m_SizeDelta: {x: 136.2821, y: 67.1074}
+  m_AnchoredPosition: {x: 136.16312, y: -1.8582}
+  m_SizeDelta: {x: 94.1559, y: 91.5862}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &809388670185265547
 CanvasRenderer:
@@ -218,12 +218,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thisskill:
     name: 
+    skill_all_ex: 
+    skill_name: []
     img: {fileID: 0}
     skillex: []
     skill_Function:
       m_PersistentCalls:
         m_Calls: []
-    power_up: 0
+    power_up: 
     Lock: 
 --- !u!1 &809388670689532662
 GameObject:
@@ -260,8 +262,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -11.7, y: -13}
-  m_SizeDelta: {x: 131.0862, y: 50}
+  m_AnchoredPosition: {x: 0.824, y: -10.976}
+  m_SizeDelta: {x: 156.1342, y: 73.351}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &809388670689532661
 CanvasRenderer:
@@ -291,7 +293,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'DEX + 1
+  m_text: '
 
 '
   m_isRightToLeft: 0
@@ -321,8 +323,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 15
+  m_fontSizeBase: 15
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -398,8 +400,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -11.2, y: 27}
-  m_SizeDelta: {x: 135.18, y: 50}
+  m_AnchoredPosition: {x: -11.2, y: 38.85}
+  m_SizeDelta: {x: 135.18, y: 26.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &809388670698657546
 CanvasRenderer:
